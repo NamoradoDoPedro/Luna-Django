@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna</title>
+</head>
+
+{% extends "nav.html" %}
+{% block content %}
+
+<body>
+    <div class="vignette"></div>
+    <label id="logo-name">Luna</label>
+</body>
+<style>
+    body {
+        margin: 0%;
+        padding: 0%;
+        background: rgb(74, 0, 105);
+    }
+
+    .vignette {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+    }
+
+    #logo-name {
+        display: block;
+        position: absolute;
+        font-size: 100px;
+        transition: 1s;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -35%);
+        color: rgb(150, 150, 150);
+        text-shadow: white 0px 0px 0px;
+    }
+
+    #logo-name:hover {
+        text-shadow: white 0px 0px 20px;
+        color: rgb(255, 255, 255);
+    }
+</style>
+{% endblock %}
+
+</html>
