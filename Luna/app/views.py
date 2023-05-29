@@ -1,41 +1,34 @@
 from django.shortcuts import render
-from .models import User
 from django.http import JsonResponse
+
+from rest_framework import viewsets
+
+from .models import User
+from .serializer import UserSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 def home(request):
-    context = {}
+    context = {
+        'current_page': 'home'
+    }
     return render(request, "home.html", context)
 
 
 def create(request):
-    context = {}
+    context = {
+        'current_page': 'create'
+    }
     return render(request, "create.html", context)
 
 
 def view(request):
-    users_list = {
+    context = {
         'users_list': User.objects.all(),
+        'current_page': 'view'
     }
-    return render(request, "view.html", users_list)
-
-
-def create_user(request):
-    context = {}
-    new_user = User()
-    new_user.name = request.POST.get("name")
-    new_user.email = request.POST.get("email")
-    new_user.age = request.POST.get("age")
-    new_user.sex = request.POST.get("sex")
-    new_user.save()
-    return render(request, "create.html", context)
-
-
-def create_internal_user(request):
-    new_user = User()
-    new_user.name = request.POST.get("name")
-    new_user.email = request.POST.get("email")
-    new_user.age = request.POST.get("age")
-    new_user.sex = request.POST.get("sex")
-    new_user.save()
-    return JsonResponse({'mensagem': 'Usuário criado com sucesso'})
+    return render(request, "view.html", context)
