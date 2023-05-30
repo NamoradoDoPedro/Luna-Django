@@ -26,6 +26,13 @@ def create(request):
     return render(request, "create.html", context)
 
 
+def edit(request):
+    context = {
+        'current_page': 'edit'
+    }
+    return render(request, "edit.html", context)
+
+
 def view(request):
     context = {
         'users_list': User.objects.all(),

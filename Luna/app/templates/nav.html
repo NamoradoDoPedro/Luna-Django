@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,10 +20,13 @@
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li {%if current_page == 'view'%} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-                    <a class="nav-link" href="{% url 'view' %}">View User</a>
+                    <a class="nav-link" href="{% url 'view' %}">View</a>
                 </li>
                 <li {%if current_page == 'create'%} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-                    <a class="nav-link" href="{% url 'create' %}">Create User</a>
+                    <a class="nav-link" href="{% url 'create' %}">Create</a>
+                </li>
+                <li {%if current_page == 'edit'%} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="{% url 'edit' %}">Edit</a>
                 </li>
             </ul>
         </div>

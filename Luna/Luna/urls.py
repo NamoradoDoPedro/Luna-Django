@@ -16,8 +16,8 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, include
-from app.views import UserViewSet
 from rest_framework import routers
+from app.views import UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
