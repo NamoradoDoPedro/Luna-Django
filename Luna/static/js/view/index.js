@@ -37,19 +37,13 @@ const createUserRow = (user) => {
     table.appendChild(tr);
 
     tr.innerHTML = `
-      <td>${user.id}</td>
-      <td>${user.name}</td>
-      <td>${user.email}</td>
-      <td>${user.age}</td>
-      <td>${user.sex}</td>
-      <td><button class="btn btn-light" data-id="${user.id}">Edit</button></td>
-      <td><button class="btn btn-danger" data-id="${user.id}">Delete</button></td>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.age}</td>
+        <td>${user.sex}</td>
+        <td><button class="btn btn-danger" id="${user.id}">Delete</button></td>
     `;
-
-    tr.querySelector('.btn-light').addEventListener('click', (event) => {
-        const userId = event.target.dataset.id;
-    });
-
     tr.querySelector('.btn-danger').addEventListener('click', async (event) => {
         const userId = event.target.dataset.id;
         const result = confirm(

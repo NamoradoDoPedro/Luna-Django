@@ -3,7 +3,7 @@ const getCSRFToken = () => {
     return cookieValue ? cookieValue[1] : '';
 };
 
-function formatDate(dateInput) {
+const formatDate = (dateInput) => {
     let dateObj = new Date(dateInput);
     let formatedDate =
         dateObj.getUTCFullYear() +
@@ -12,7 +12,7 @@ function formatDate(dateInput) {
         '-' +
         ('0' + dateObj.getUTCDate()).slice(-2);
     return formatedDate;
-}
+};
 
 const post_user = async (data) => {
     const csrfToken = getCSRFToken();
@@ -36,13 +36,13 @@ const confirmBtn = document.getElementById('confirm-btn');
 confirmBtn.addEventListener('click', () => {
     const nameInfo = document.getElementById('name').value;
     const emailInfo = document.getElementById('email').value;
-    const ageInfo = formatDate(document.getElementById('age').value);
+    const ageInfo = document.getElementById('age').value;
     const genderInfo = document.getElementById('gender').value;
     try {
         const data = {
             name: nameInfo,
             email: emailInfo,
-            age: ageInfo,
+            age: formatDate(ageInfo),
             sex: genderInfo,
         };
         if (nameInfo != '' || emailInfo != '' || ageInfo != 'NaN-aN-aN') {
