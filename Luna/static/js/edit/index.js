@@ -15,11 +15,9 @@ const find_user = async (id) => {
             .catch(() => {
                 return false;
             });
-
-        console.log(response);
         return response.detail == 'Not found.' ? false : response;
     } catch (err) {
-        console.error(err);
+        console.log(`Error in get method: ${err}`);
         return false;
     }
 };
@@ -119,11 +117,11 @@ document.getElementById('edit-btn').addEventListener('click', async () => {
                 if (response.ok) {
                     alert('Change request successful');
                 } else {
-                    alert('Change request error:', response.status);
+                    alert(`Change request error: ${response.status}`);
                 }
                 alert();
             } catch (err) {
-                alert('Error in POST method');
+                alert(`Change method error: ${err}`);
             }
         });
 });

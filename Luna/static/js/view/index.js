@@ -4,22 +4,22 @@ const getCSRFToken = () => {
 };
 
 const deleteUser = async (userId) => {
-    const csrfToken = getCSRFToken();
     try {
         const response = await fetch(`http://127.0.0.1:8000/users/${userId}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken,
+                'X-CSRFToken': getCSRFToken(),
             },
         });
         if (response.ok) {
-            console.log('DELETE request successful');
+            alert('DELETE request successful');
         } else {
-            console.error('DELETE request error:', response.status);
+            console.log(response);
+            alert(`DELETE request error: ${response.status}`);
         }
-    } catch (error) {
-        console.error('DELETE request error:', error);
+    } catch (err) {
+        alert(`DELETE method error: ${err}`);
     }
 };
 
@@ -44,21 +44,19 @@ const createUserRow = (user) => {
         <td>${user.sex}</td>
         <td><button class="btn btn-danger" id="${user.id}">Delete</button></td>
     `;
-    tr.querySelector('.btn-danger').addEventListener('click', async (event) => {
-        const userId = event.target.dataset.id;
-        const result = confirm(
-            `Do you really want to delete the ID ${userId}?`
-        );
-        if (result) {
-            console.log(`UserID = ${userId}`);
-            try {
-                await deleteUser(userId);
-                location.reload();
-            } catch (error) {
-                console.error(error);
+    document
+        .getElementById(`${user.id}`)
+        .addEventListener('click', async () => {
+            if (confirm(`Do you really want to delete the ID ${user.id}?`)) {
+                console.log(`UserID = ${user.id}`);
+                try {
+                    await deleteUser(user.id);
+                    location.reload();
+                } catch (err) {
+                    alert(`Error: ${err}`);
+                }
             }
-        }
-    });
+        });
 };
 
 fetch('http://127.0.0.1:8000/users/')
