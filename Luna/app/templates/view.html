@@ -14,21 +14,45 @@
 {% block content %}
 <body>
     <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Gender</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-        </table>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Sex</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="email" class="form-control" placeholder=""></td>
+                        <td><input type="date" class="form-control" placeholder=""></td>
+                        <td>
+                            <select class="custom-select">
+                                <option value=""></option>
+                                <option value="Masculino">Male</option>
+                                <option value="Feminino">Female</option>
+                                <option value="Outro">Other</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-light" type="button">Filter</button></td>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
     </div>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
     <script src="{% static 'js/view/index.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

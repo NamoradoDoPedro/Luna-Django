@@ -6,4 +6,8 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     age = models.DateField(max_length=30)
-    sex = models.CharField(max_length=10)
+    sex = models.CharField(max_length=10, choices=[
+        ('Masculino', 'Masculino'),
+        ('Feminino', 'Feminino'),
+        ('Outro', 'Outro'),
+    ])

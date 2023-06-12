@@ -26,14 +26,14 @@ const resetForm = () => {
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('age').value = '';
-    document.getElementById('gender').value = 'Masculino';
+    document.getElementById('sex').value = 'Masculino';
 };
 
 const userForm = [
     document.getElementById('name'),
     document.getElementById('email'),
     document.getElementById('age'),
-    document.getElementById('gender'),
+    document.getElementById('sex'),
 ];
 
 document
@@ -52,9 +52,9 @@ document
             document.getElementById('email').value = data.email;
             document.getElementById('age').value = data.age;
             if (data.sex == 'Outro') {
-                document.getElementById('gender').value = 'Outro';
+                document.getElementById('sex').value = 'Outro';
             } else {
-                document.getElementById('gender').value =
+                document.getElementById('sex').value =
                     data.sex == 'Masculino' ? 'Masculino' : 'Feminino';
             }
             document.getElementById('edit-btn').removeAttribute('disabled');
@@ -94,13 +94,13 @@ document.getElementById('edit-btn').addEventListener('click', async () => {
             const nameInfo = document.getElementById('name').value;
             const emailInfo = document.getElementById('email').value;
             const ageInfo = document.getElementById('age').value;
-            const genderInfo = document.getElementById('gender').value;
+            const sexInfo = document.getElementById('sex').value;
             const idInput = document.getElementById('id').value;
             data = {
                 name: nameInfo,
                 email: emailInfo,
                 age: formatDate(ageInfo),
-                sex: genderInfo,
+                sex: sexInfo,
             };
             try {
                 const response = await fetch(
@@ -119,7 +119,6 @@ document.getElementById('edit-btn').addEventListener('click', async () => {
                 } else {
                     alert(`Change request error: ${response.status}`);
                 }
-                alert();
             } catch (err) {
                 alert(`Change method error: ${err}`);
             }

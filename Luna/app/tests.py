@@ -1,18 +1,17 @@
 import requests
-
 data = {
-    'name': 'John Doe',
+    'name': 'Teste request',
     'email': 'johndoe@example.com',
-    'age': '25-01-2001',
-    'sex': 'Male'
+    'age': '2001-05-05',
+    'sex': 'Outro'
 }
 
-response = requests.post(
-    'http://127.0.0.1:8000/api/post-users', json=data)
+# response = requests.get('http://127.0.0.1:8000/users/')
+response = requests.post('http://127.0.0.1:8000/users/', json=data)
 
-if response.status_code == 200:
-    print('Requisição POST bem-sucedida!')
+if response.ok:
+    print('Requisição bem-sucedida!')
     print(response.json())
 else:
-    print('Falha na requisição POST!')
+    print('Falha na requisição!')
     print(response.text)

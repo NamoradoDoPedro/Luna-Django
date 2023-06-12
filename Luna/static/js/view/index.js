@@ -23,8 +23,6 @@ const deleteUser = async (userId) => {
     }
 };
 
-const table = document.getElementById('tbody');
-
 const createButton = (text, className) => {
     const button = document.createElement('button');
     button.innerText = text;
@@ -34,14 +32,20 @@ const createButton = (text, className) => {
 
 const createUserRow = (user) => {
     const tr = document.createElement('tr');
-    table.appendChild(tr);
+    document.getElementById('tbody').appendChild(tr);
 
     tr.innerHTML = `
         <td>${user.id}</td>
         <td>${user.name}</td>
         <td>${user.email}</td>
         <td>${user.age}</td>
-        <td>${user.sex}</td>
+        <td>${
+            user.sex === 'Outro'
+                ? 'Other'
+                : user.sex === 'Masculino'
+                ? 'Male'
+                : 'Female'
+        }</td>
         <td><button class="btn btn-danger" id="${user.id}">Delete</button></td>
     `;
     document
