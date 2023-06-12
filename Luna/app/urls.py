@@ -6,5 +6,4 @@ urlpatterns = [
     path("create/", views.create, name="create"),
     path("view/", views.view, name="view"),
     path("edit/", views.edit, name="edit"),
-    path("/*", views.edit, name="edit"),
 ]
