@@ -18,7 +18,6 @@ Including another URLconf
 from django.urls import path, include
 from rest_framework import routers
 from app.views import UserViewSet
-from django.views.defaults import handler404
 
 
 router = routers.DefaultRouter()
